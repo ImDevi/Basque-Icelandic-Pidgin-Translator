@@ -16,3 +16,11 @@ permission from the author.
 - https://ojs.ehu.eus/index.php/ASJU/article/view/9364/8592 (in the works)
 - https://www.youtube.com/watch?v=fs3u7tqZXT8 (in the works)
 - https://docs.google.com/spreadsheets/d/1NTQ7SJD6ttgegD8YgZAb-fvsZcJGCrH2R6GEx-qapb8/edit?gid=0#gid=0 (in the works)
+
+**Completion**
+-----------------------------------------------------------------------------------------------
+Vocabula Gallica 🟨⬜⬜⬜ 10%
+Vocabula Biscaica 🟩🟩🟩🟨 90%
+nokkra latínu glósur 🟩🟩🟩🟩 100%
+kátlegar glósur 🟩🟩🟩🟩 100%
+The Harvard Manuscript 🟩🟩🟩🟩 100% (corrected)
