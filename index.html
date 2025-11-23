@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basque–Icelandic Pidgin Translator</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@700&display=swap" rel="stylesheet">
+  <!-- Compromise NLP -->
+  <script src="https://unpkg.com/compromise"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("https://i.redd.it/crhbqjisg7id1.png") center/cover no-repeat;
+    }
+    .wrapper { display: flex; flex-direction: column; align-items: center; }
+    .title {
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+    .container { display: flex; gap: 60px; }
+    .box { display: flex; flex-direction: column; align-items: center; }
+    .label {
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      margin-bottom: 14px;
+      font-size: 28px;
+    }
+    textarea {
+      width: 400px;
+      height: 260px;
+      border: 4px solid black;
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 20px;
+      resize: none;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      overflow: auto;
+    }
+    textarea::-webkit-scrollbar { width: 0; height: 0; }
+    textarea { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">Basque–Icelandic Pidgin Translator</div>
+    <div class="container">
+      <div class="box">
+        <div class="label">English</div>
+        <textarea id="english" spellcheck="true" autocomplete="off"></textarea>
+      </div>
+      <div class="box">
+        <div class="label">Basque–Icelandic Pidgin</div>
+        <textarea id="bip" spellcheck="false" autocomplete="off"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dictionary = [
+      { english: ["male","man"], bip: ["gizona","gisona","gissuna"] },
+      { english: ["dad","father"], bip: ["ætha","aita"] },
+      { english: ["daughter"], bip: ["alaua"] },
+      { english: ["mum","mom","mother"], bip: ["ama"] },
+      { english: ["string","rope"], bip: ["amara"] },
+      { english: ["wether","female sheep"], bip: ["ardia"] },
+      { english: ["sugar"], bip: ["asucera"] },
+      { english: ["t-shirt","jersey","sweatshirt","blouse","tunic","shirt"], bip: ["altora","skyrta","atorra","attora"] },
+      { english: ["cod"], bip: ["bachalaa","baccala"] },
+      { english: ["yes"], bip: ["bai"] },
+      { english: ["whale"], bip: ["balia","balja"] },
+      { english: ["eye"], bip: ["bedia","begia"] },
+      { english: ["tobacco pipe","spun tobacco"], bip: ["belara","bilara","billara","bellara"] },
+      { english: ["black"], bip: ["belsa"] },
+      { english: ["new"], bip: ["berria"] },
+      { english: ["hot","warm"], bip: ["berrua"] },
+      { english: ["goat","lamb"], bip: ["bildosa"] },
+      { english: ["Biscay"], bip: ["Biscai"] },
+      { english: ["Biscayan"], bip: ["Biscaica"] },
+      { english: ["cookie","Gâteau Basque","biscuit"], bip: ["biskosa","biskusa"] },
+      { english: ["clean"], bip: ["bocata"] },
+      { english: ["butter"], bip: ["bura"] },
+      { english: ["tail"], bip: ["buztana","bustana"] },
+      { english: ["pair"], bip: ["by"] },
+      { english: ["crap","poo","poop","shit","feces"], bip: ["caca"] },
+      { english: ["garment","sweater"], bip: ["camisula","cammisola"] },
+      { english: ["knife"], bip: ["canavita"] },
+      { english: ["catfish"], bip: ["canruta","canrusa"] },
+      { english: ["cat"], bip: ["gattuba","chatua","catua"] },
+      { english: ["nothing"], bip: ["cavinit"] },
+      { english: ["kitty","kitten"], bip: ["ckatucumia","chatucumia","catucumia"] },
+      { english: ["little","young","small"], bip: ["clinke"] },
+      { english: ["divided","slashed","cut"], bip: ["confect"] },
+      { english: ["preserve","jam"], bip: ["confituura"] },
+      { english: ["call","name"], bip: ["dai"] },
+      { english: ["drink"], bip: ["edam"] },
+      { english: ["or"], bip: ["edur"] },
+      { english: ["no"], bip: ["ez","es"] },
+      { english: ["hand"], bip: ["eskua"] },
+      { english: ["sister"], bip: ["eska","esna"] },
+      { english: ["not"], bip: ["esta"] },
+      { english: ["and"], bip: ["eta"] },
+      { english: ["I","myself","my","mine","me"], bip: ["mi"] },
+      { english: ["be","if","to","for","‎"], bip: ["for"] },
+      { english: ["you are"], bip: ["fussu"] },
+      { english: ["name","call"], bip: ["dai"] },
+      { english: ["Gallia","France"], bip: ["Gallia"] },
+      { english: ["Gallic","French"], bip: ["Gallica"] },
+      { english: ["trousers","pants"], bip: ["galsach"] },
+      { english: ["sock"], bip: ["galsardia"] },
+      { english: ["eat"], bip: ["gianzu"] },
+      { english: ["red"], bip: ["gloria"] },
+      { english: ["12","twelve"], bip: ["hamar"] },
+      { english: ["boy","kid","child","brother"], bip: ["hara"] },
+      { english: ["flipper","fin"], bip: ["hejgala"] },
+      { english: ["orifice","hole"], bip: ["hiarin"] },
+      { english: ["here"], bip: ["huna"] },
+      { english: ["food"], bip: ["jaterra"] },
+      { english: ["kiss"], bip: ["jet"] },
+      { english: ["apply","give"], bip: ["jndasu","jndazu","indazu","indasu"] },
+      { english: ["give to me"], bip: ["jndasunirj","jndasuniri","indasunirj","jndazunirj","jndazuniri","indazuniri","indazunirj","indasuniri"] },
+      { english: ["yourself","your","yours","yourselves","you"], bip: ["ju"] },
+      { english: ["scarf"], bip: ["lepagua","leppagua","lappacua","lepachua","lepa chua","lepackua","lepakoa"] },
+      { english: ["lace","moor","garter"], bip: ["locaria"] },
+      { english: ["evil","bad"], bip: ["mala"] },
+      { english: ["kill"], bip: ["morta"] },
+      { english: ["flour"], bip: ["mufeta"] },
+      { english: ["kerchief"], bip: ["muskanasa"] },
+      { english: ["hood","cap"], bip: ["sanua","mutrua"] },
+      { english: ["Spanish wine","red wine"], bip: ["nafarra","navaria"] },
+      { english: ["in what way","how"], bip: ["nola"] },
+      { english: ["what"], bip: ["ser"] },
+      { english: ["bread"], bip: ["braud","ogia","ouia"] },
+      { english: ["halibut"], bip: ["plaunsa"] },
+      { english: ["dog"], bip: ["possua"] },
+      { english: ["puppy"], bip: ["possucumia"] },
+      { english: ["give"], bip: ["presenta"] },
+      { english: ["cider","sour drink"], bip: ["sagarduna"] },
+      { english: ["wine","communion wine"], bip: ["sagarnua"] },
+      { english: ["horse"], bip: ["samaia","samaria"] },
+      { english: ["hat"], bip: ["sappala","sapola"] },
+      { english: ["shoe","boot"], bip: ["sappata"] },
+      { english: ["butt"], bip: ["sat"] },
+      { english: ["silk"], bip: ["seda"] },
+      { english: ["mitten"], bip: ["sekulara"] },
+      { english: ["son"], bip: ["semia"] },
+      { english: ["ray","skate"], bip: ["sera"] },
+      { english: ["six"], bip: ["sey"] },
+      { english: ["sheep"], bip: ["sirilua"] },
+      { english: ["feather","bottom","down"], bip: ["snua"] },
+      { english: ["how many","how much"], bip: ["sumbat","sumbatt","simbatur"] },
+      { english: ["white"], bip: ["suria"] },
+      { english: ["tobacco"], bip: ["tabacua"] },
+      { english: ["frock","outer garment","overcoat"], bip: ["tacka"] },
+      { english: ["come"], bip: ["jin","temin"] },
+      { english: ["make","do"], bip: ["travala"] },
+      { english: ["trade","exchange","buy"], bip: ["trucka","drecka","truka"] },
+      { english: ["grey","gray"], bip: ["uhera"] },
+      { english: ["water"], bip: ["ura"] },
+      { english: ["gold"], bip: ["uria"] },
+      { english: ["dew","rain"], bip: ["urja"] },
+      { english: ["dew"], bip: ["urigia"] },
+      { english: ["flour","milk"], bip: ["esnia","usnia"] },
+      { english: ["note","write"], bip: ["vestialtora","skrifa"] },
+      { english: ["word","vocabulary"], bip: ["vocabula"] },
+      { english: ["sleep","sleep with"], bip: ["fenicha"] },
+      { english: ["reproduce"], bip: ["sickutta"] },
+      { english: ["mare","female horse"], bip: ["merina"] },
+      { english: ["defile","hurt"], bip: ["serda"] },
+      { english: ["beard"], bip: ["bisarra"] },
+      { english: ["broken","break"], bip: ["haesia"] },
+      { english: ["table"], bip: ["thala"] },
+      { english: ["female","woman"], bip: ["emastia"] },
+      { english: ["couple","married couple"], bip: ["esconduba"] },
+      { english: ["Bachelor","unmarried man","boy"], bip: ["gisongastia"] },
+      { english: ["Spinster","unmarried woman","girl"], bip: ["nescascagastia"] },
+      { english: ["boat","ship"], bip: ["uncia"] },
+      { english: ["ship master","captain","shipmaster"], bip: ["mastruba"] },
+      { english: ["helmsman","pilot"], bip: ["pilotuba"] },
+      { english: ["carpenter"], bip: ["harotsa"] },
+      { english: ["cook","chef"], bip: ["espensaria"] },
+      { english: ["captain"], bip: ["cotromastruba"] },
+      { english: ["cooper","barrel maker"], bip: ["dubalela"] },
+      { english: ["harpooner"], bip: ["harporie"] },
+      { english: ["group","crew"], bip: ["laguna"] },
+      { english: ["cabin"], bip: ["siöppa"] },
+      { english: ["rudder","helm"], bip: ["lema"] },
+      { english: ["sail"], bip: ["bela"] },
+      { english: ["mast"], bip: ["masta"] },
+      { english: ["brandy","liquor"], bip: ["agorienta"] },
+      { english: ["French wine"], bip: ["arnua"] },
+      { english: ["communion"], bip: ["sag"] },
+      { english: ["sea"], bip: ["isarsua"] },
+      { english: ["sea","lake"], bip: ["bæja"] },
+      { english: ["glacier","sea ice"], bip: ["bæencha"] },
+      { english: ["fish"], bip: ["bacchalaa"] },
+      { english: ["ram","sheep","castrated ram"], bip: ["sicilua","sikilua"] },
+      { english: ["priest"], bip: ["abessa"] },
+      { english: ["church"], bip: ["elisa"] },
+      { english: ["house"], bip: ["etsia"] },
+      { english: ["monarch","king"], bip: ["rege"] },
+      { english: ["fabric","cloth"], bip: ["ojela"] },
+      { english: ["hat"], bip: ["carpuza"] },
+      { english: ["stowaway fish"], bip: ["lapprusa","lapparuzia","lapuruts","lapurutsa"] },
+      { english: ["feather"], bip: ["luma"] },
+      { english: ["other","another"], bip: ["beste"] },
+    ];
+
+    // Build maps
+    function normalizeKey(str) {
+  return str
+    .replace(/[\u2012\u2013\u2014\u2015]/g, '-')
+    .replace(/[.,:;!?/\\'"()\[\]{}]/g, '')
+    .toLowerCase()
+    .trim();
+}
+    const enToBip = {}, bipToEn = {};
+    dictionary.forEach(entry => {
+      entry.english.forEach(en => {
+        entry.bip.forEach(bip => {
+          enToBip[normalizeKey(en)] = bip;
+          bipToEn[normalizeKey(bip)] = en;
+        });
+      });
+    });
+
+    const english = document.getElementById('english');
+    const bip = document.getElementById('bip');
+    let active = null;
+
+    function splitWordAndPunct(token) {
+  const match = token.match(/^([a-zA-Z]+)([^a-zA-Z]*)$/);
+  if (match) {
+    return { word: match[1], punct: match[2] };
+  }
+  return { word: token, punct: "" };
+}
+
+function normalizeEnglish(text) {
+  let doc = nlp(text);
+  doc = doc.remove('(a|an|the)');
+  doc.verbs().toInfinitive();
+  doc.nouns().toSingular();
+
+  const terms = doc.terms().json().flatMap(m => m.terms || []);
+
+  return terms.map(t => {
+    const isAdj = t.tags && t.tags.includes('Adjective');
+    const isComp = t.tags && t.tags.includes('Comparative');
+    const isSup = t.tags && t.tags.includes('Superlative');
+
+    if (isAdj) {
+      const conj = nlp(t.text).adjectives().conjugate();
+      let base = t.text;
+      if (conj && conj[0]) {
+        base = conj[0].Adjective || conj[0].base || base;
+      } else {
+        const lower = t.text.toLowerCase();
+        if (lower.endsWith('est') && lower.length > 4) {
+          base = lower.replace(/est$/,'');
+        } else if (lower.endsWith('er') && lower.length > 3) {
+          base = lower.replace(/er$/,'');
+        } else {
+          base = lower;
+        }
+      }
+      return {
+        ...t,
+        text: base,
+        _wasComp: !!isComp,
+        _wasSup: !!isSup
+      };
+    }
+
+    return t;
+  });
+}
+
+// Translate English -> BIP
+function translateEnglishToBip(input) {
+  return input.split(/\r?\n/).map(line => {
+    const terms = normalizeEnglish(line);
+    return terms.map(term => {
+      const { word, punct } = splitWordAndPunct(term.text);
+      if (!word.trim()) return punct;
+      const wasComparative = term._wasComp || term.tags?.includes("Comparative");
+      const wasSuperlative = term._wasSup || term.tags?.includes("Superlative");
+      const needsVyra = wasComparative || wasSuperlative;
+      const bipWord = enToBip[normalizeKey(word)];
+      let out = bipWord ? (needsVyra ? "vyra " + bipWord : bipWord)
+                        : (needsVyra ? "vyra " + word : word);
+      return out + punct;
+    }).join(" ");
+  }).join("\n");
+}
+
+// Translate BIP -> English
+function translateBipToEnglish(input) {
+  return input.split(/\r?\n/).map(line => {
+    return line.split(/(\s+)/).map(tok => {
+      const trimmed = tok.trim();
+      if (!trimmed) return tok;
+      const { word, punct } = splitWordAndPunct(trimmed);
+      const norm = normalizeKey(word);
+      const mapped = bipToEn[norm];
+      return (mapped || word) + punct;
+    }).join("");
+  }).join("\n");
+}
+
+
+function fixForSyntax(text) {
+  return text
+    .replace(/(^|\s)(ju)\s+(for)(?=\s|$|[,.!?;:])/gi, '$1$3 $2')
+    .replace(/(^|\s)(mi)\s+(for)(?=\s|$|[,.!?;:])/gi, '$1$3 $2');
+}
+
+    english.addEventListener('input', () => {
+      if (active === 'bip') return;
+      active = 'en';
+      const translated = translateEnglishToBip(english.value);
+      bip.value = fixForSyntax(translated);
+      active = null;
+    });
+
+    bip.addEventListener('input', () => {
+  if (active === 'en') return;
+  active = 'bip';
+  const fixedBip = fixForSyntax(bip.value);
+  if (fixedBip !== bip.value) {
+    bip.value = fixedBip;
+  }
+  english.value = translateBipToEnglish(fixedBip);
+  active = null;
+});
+
+  </script>
+</body>
+</html>
