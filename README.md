@@ -19,8 +19,8 @@ permission from the author.
 
 **Completion**
 -----------------------------------------------------------------------------------------------
-Vocabula Gallica 🟨⬜⬜⬜ 10%
-Vocabula Biscaica 🟩🟩🟩🟨 90%
-nokkra latínu glósur 🟩🟩🟩🟩 100%
-kátlegar glósur 🟩🟩🟩🟩 100%
-The Harvard Manuscript 🟩🟩🟩🟩 100% (corrected)
+- Vocabula Gallica 🟨⬜⬜⬜ 10%
+- Vocabula Biscaica 🟩🟩🟩🟨 90%
+- nokkra latínu glósur 🟩🟩🟩🟩 100%
+- kátlegar glósur 🟩🟩🟩🟩 100%
+- The Harvard Manuscript 🟩🟩🟩🟩 100% (corrected)
