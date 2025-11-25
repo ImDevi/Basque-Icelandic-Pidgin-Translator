@@ -5,9 +5,8 @@ the 17th century language of Basque whalers - Basque-Icelandic Pidgin.
 
 **Background image credits**
 -----------------------------------------------------------------------------------------------
-The image used for the background was taken from: https://www.historymuseum.ca/virtual-museum-of-new-france/economic-activities/basque-whalers/.
-- The site is intended to feature this (https://i.redd.it/crhbqjisg7id1.png) image as the background, however I'm still awaiting
-permission from the author.
+The image used for the background was taken from: https://i.redd.it/crhbqjisg7id1.png and was
+created by u/navarretedf, who allowed me to use it.
 
 **Translation sources**
 -----------------------------------------------------------------------------------------------
