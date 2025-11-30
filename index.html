@@ -113,7 +113,7 @@
       { english: ["sister"], bip: ["eska","esna"] },
       { english: ["not"], bip: ["esta"] },
       { english: ["and"], bip: ["eta"] },
-      { english: ["I","myself","my","mine","me"], bip: ["mi"] },
+      { english: ["I","myself","my","mine","me"], bip: ["mi","for mi"] },
       { english: ["be","if","to","for","‎"], bip: ["for"] },
       { english: ["you are"], bip: ["fussu"] },
       { english: ["name","call"], bip: ["dai"] },
@@ -132,7 +132,7 @@
       { english: ["kiss"], bip: ["jet"] },
       { english: ["apply","give"], bip: ["jndasu","jndazu","indazu","indasu"] },
       { english: ["give to me"], bip: ["jndasunirj","jndasuniri","indasunirj","jndazunirj","jndazuniri","indazuniri","indazunirj","indasuniri"] },
-      { english: ["yourself","your","yours","yourselves","you"], bip: ["ju"] },
+      { english: ["yourself","your","yours","yourselves","you"], bip: ["ju","for ju"] },
       { english: ["scarf"], bip: ["lepagua","leppagua","lappacua","lepachua","lepa chua","lepackua","lepakoa"] },
       { english: ["lace","moor","garter"], bip: ["locaria"] },
       { english: ["evil","bad"], bip: ["mala"] },
@@ -339,7 +339,8 @@ function translateBipToEnglish(input) {
 function fixForSyntax(text) {
   return text
     .replace(/(^|\s)(ju)\s+(for)(?=\s|$|[,.!?;:])/gi, '$1$3 $2')
-    .replace(/(^|\s)(mi)\s+(for)(?=\s|$|[,.!?;:])/gi, '$1$3 $2');
+    .replace(/(^|\s)(mi)\s+(for)(?=\s|$|[,.!?;:])/gi, '$1$3 $2')
+    .replace(/\bfor\s+for\b/gi, 'for');
 }
 
     english.addEventListener('input', () => {
