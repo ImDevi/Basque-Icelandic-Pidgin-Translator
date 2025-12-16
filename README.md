@@ -1,4 +1,6 @@
-**About the Basque-Icelandic-Pidgin-Translator**
+<img width="160" height="256" alt="image" src="https://github.com/user-attachments/assets/fd0615df-1a04-4d2a-ab7d-12aba9c5faa5" />
+
+**Basque-Icelandic-Pidgin-Translator**
 -----------------------------------------------------------------------------------------------
 The **Basque-Icelandic Pidgin Translator** is an automated translation tool for translating into
 the 17th century language of Basque whalers - Basque-Icelandic Pidgin.
