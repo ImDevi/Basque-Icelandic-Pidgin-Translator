@@ -239,7 +239,7 @@
       { english: ["6","six"], bip: ["sey","seÿ"] },
       { english: ["7","seven"], bip: ["saspey","saspi"] },
       { english: ["8","eight"], bip: ["sortsi","sortsey","sortzey","sortzi"] },
-      { english: ["9","nine"], bip: ["bedratsi","bedritze] },
+      { english: ["9","nine"], bip: ["bedratsi","bedritze"] },
       { english: ["11","eleven"], bip: ["hamica","hameica"] },
       { english: ["12","twelve"], bip: ["hamavi","hamar bÿ"] },
       { english: ["13","thirteen"], bip: ["hamahiru","hamar hÿru"] },
@@ -306,7 +306,7 @@
     let active = null;
 
     function splitWordAndPunct(token) {
-  const match = token.match(/^([a-zA-Z]+)([^a-zA-Z]*)$/);
+  const match = token.match(/^([\p{L}'\-]+)([^\p{L}'\-]*)$/u);
   if (match) {
     return { word: match[1], punct: match[2] };
   }
