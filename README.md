@@ -15,7 +15,7 @@ created by u/navarretedf, who allowed me to use it.
 - https://www.academia.edu/28579385/Chapter_12_A_Fourth_Basque_Icelandic_Glossary
 - https://en.wikipedia.org/wiki/Basque%E2%80%93Icelandic_pidgin
 - https://ojs.ehu.eus/index.php/ASJU/article/view/9364/8592 (in the works)
-- https://www.youtube.com/watch?v=fs3u7tqZXT8 (in the works)
+- https://www.youtube.com/watch?v=fs3u7tqZXT8
 - https://docs.google.com/spreadsheets/d/1NTQ7SJD6ttgegD8YgZAb-fvsZcJGCrH2R6GEx-qapb8/edit?gid=0#gid=0 (in the works)
 
 **Completion**
