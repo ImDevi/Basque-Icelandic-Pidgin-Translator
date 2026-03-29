@@ -16,12 +16,12 @@ created by u/navarretedf, who allowed me to use it.
 - https://en.wikipedia.org/wiki/Basque%E2%80%93Icelandic_pidgin
 - https://ojs.ehu.eus/index.php/ASJU/article/view/9364/8592 (in the works)
 - https://www.youtube.com/watch?v=fs3u7tqZXT8
-- https://docs.google.com/spreadsheets/d/1NTQ7SJD6ttgegD8YgZAb-fvsZcJGCrH2R6GEx-qapb8/edit?gid=0#gid=0 (in the works)
+- https://docs.google.com/spreadsheets/d/1NTQ7SJD6ttgegD8YgZAb-fvsZcJGCrH2R6GEx-qapb8/edit?gid=0#gid=0
 
 **Completion**
 -----------------------------------------------------------------------------------------------
-- Vocabula Gallica 🟨⬜⬜⬜ 10%
+- Vocabula Gallica 🟩🟩⬜⬜ 50%
 - Vocabula Biscaica 🟩🟩🟩🟨 90%
-- nokkra latínu glósur 🟩🟩🟩🟩 100%
+- nokkra latínu glósur 🟩🟩🟩🟩 100% (corrected)
 - kátlegar glósur 🟩🟩🟩🟩 100%
 - The Harvard Manuscript 🟩🟩🟩🟩 100% (corrected)
